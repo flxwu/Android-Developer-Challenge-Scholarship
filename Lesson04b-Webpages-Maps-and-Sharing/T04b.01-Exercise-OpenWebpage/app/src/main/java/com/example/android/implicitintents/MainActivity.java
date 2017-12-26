@@ -15,6 +15,8 @@
  */
 package com.example.android.implicitintents;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -66,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
      * similar to what I've done above. You can view a list of implicit Intents on the Common
      * Intents page from the developer documentation.
      *
-     * @see <http://developer.android.com/guide/components/intents-common.html/>
-     *
      * @param v Button that was clicked.
+     * @see <http://developer.android.com/guide/components/intents-common.html/>
      */
     public void createYourOwn(View v) {
         Toast.makeText(this,
@@ -77,12 +78,16 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    // TODO (1) Create a method called openWebPage that accepts a String as a parameter
+    // COMPLETED (1) Create a method called openWebPage that accepts a String as a parameter
     // Do steps 2 - 4 within openWebPage
-
+    private void openWebPage(String url) {
         // TODO (2) Use Uri.parse to parse the String into a Uri
-
+        Uri uri = Uri.parse(url);
         // TODO (3) Create an Intent with Intent.ACTION_VIEW and the webpage Uri as parameters
-
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, uri);
         // TODO (4) Verify that this Intent can be launched and then call startActivity
+        if (webIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(webIntent);
+        }
+    }
 }
