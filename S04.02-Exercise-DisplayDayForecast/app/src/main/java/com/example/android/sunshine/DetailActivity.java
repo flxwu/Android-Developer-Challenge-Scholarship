@@ -20,8 +20,10 @@ public class DetailActivity extends AppCompatActivity {
         mWeatherForDay = (TextView) findViewById(R.id.tv_weatherForDay);
 
         Intent parent = getIntent();
-        if (parent.hasExtra(Intent.EXTRA_TEXT)) {
-            mWeatherForDay.setText(parent.getStringExtra(Intent.EXTRA_TEXT));
+        if (parent != null) {
+            if (parent.hasExtra(Intent.EXTRA_TEXT)) {
+                mWeatherForDay.setText(parent.getStringExtra(Intent.EXTRA_TEXT));
+            }
         }
     }
 }
