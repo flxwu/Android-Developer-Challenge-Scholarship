@@ -1,11 +1,8 @@
-# Sunshine!
+### Android Developer Challenge Scholarship
+This is my repository for the *Developer Challenge Scholarship* by Google and Udacity on the *Android Developer Track*.
 
-This is the repository for the weather app that students build during the [Developing Android Apps](https://www.udacity.com/course/new-android-fundamentals--ud851) course at Udacity.
+The `master` branch contains all the lesson exercises, the `sunshine` branch contains all the exercises on the actual _Sunshine Weather App_. 
 
-To use this repository, fork/clone it, or download a zip using the green "Clone or download" button at the top of the file list. Each coding exercise in the course has starter code in a folder labeled like `S01.01-Exercise-CreateLayout`, and corresponding solution code labeled like `S01.01-Solution-CreateLayout`. The intended workflow is for you to open the starter code for each exercise in Android Studio, and complete each of the tasks labeled `TODO`. You can easily find all such tasks using the TODO pane at the bottom left of Android Studio.
+#### _NOTE_
 
-When you're done, or if you run into any problems, you can open up the solution code in another Android Studio window, and compare our solution to what you've written!
-
-# Contributing
-
-Because of the way this repository is constructed, pull requests don't really work. Issues, however, are gratefully accepted!
+The first 3 lessons aren't covered by commits here as I set up the git repository in the fifth lesson(fourth lesson in exercises, fifth in Udacity Course).
