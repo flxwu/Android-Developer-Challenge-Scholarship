@@ -18,11 +18,11 @@ import com.example.android.waitlist.data.WaitlistDbHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String LOG_TAG = MainActivity.class.getSimpleName();
     private GuestListAdapter mAdapter;
     private SQLiteDatabase mDb;
     private EditText mNewGuestNameEditText;
     private EditText mNewPartySizeEditText;
-    private final static String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,19 +56,28 @@ public class MainActivity extends AppCompatActivity {
         // Link the adapter to the RecyclerView
         waitlistRecyclerView.setAdapter(mAdapter);
 
+        //COMPLETED (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and RIGHT swipe directions
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
-        //TODO (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and RIGHT swipe directions
+            // COMPLETED (4) Override onMove and simply return false inside
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-        // TODO (4) Override onMove and simply return false inside
-
-        // TODO (5) Override onSwiped
-
-        // TODO (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
-        // TODO (9) call removeGuest and pass through that id
-        // TODO (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
-
-        //TODO (11) attach the ItemTouchHelper to the waitlistRecyclerView
-
+            // COMPLETED (5) Override onSwiped
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                // COMPLETED (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
+                long id = Long.parseLong(viewHolder.itemView.getTag().toString());
+                // COMPLETED (9) call removeGuest and pass through that id
+                removeGuest(id);
+                // COMPLETED (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
+                mAdapter.swapCursor(getAllGuests());
+            }
+        }).attachToRecyclerView(waitlistRecyclerView);
+        //COMPLETED (11) attach the ItemTouchHelper to the waitlistRecyclerView
     }
 
     /**
@@ -103,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * Query the mDb and get all guests from the waitlist table
      *
@@ -124,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Adds a new guest to the mDb including the party count and the current timestamp
      *
-     * @param name  Guest's name
+     * @param name      Guest's name
      * @param partySize Number in party
      * @return id of new record added
      */
@@ -136,9 +144,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // TODO (1) Create a new function called removeGuest that takes long id as input and returns a boolean
-
-    // TODO (2) Inside, call mDb.delete to pass in the TABLE_NAME and the condition that WaitlistEntry._ID equals id
-
+    // COMPLETED (1) Create a new function called removeGuest that takes long id as input and returns a boolean
+    private boolean removeGuest(long id) {
+        // COMPLETED (2) Inside, call mDb.delete to pass in the TABLE_NAME and the condition that WaitlistEntry._ID equals id
+        return mDb.delete(WaitlistContract.WaitlistEntry.TABLE_NAME,
+                WaitlistContract.WaitlistEntry._ID + " = " + id, null) > 0;
+    }
 
 }
