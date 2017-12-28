@@ -5,4 +5,4 @@ The `master` branch contains all the lesson exercises, the `sunshine` branch con
 
 #### _NOTE_
 
-The first 3 lessons aren't covered by commits here as I set up the git repository in the fifth lesson(fourth lesson in exercises, fifth in Udacity Course).
+I have of course worked through the first 3 lessons although they aren't covered by commits here as I set up the git repository in the fifth lesson(fourth lesson in exercises, fifth in Udacity Course).
