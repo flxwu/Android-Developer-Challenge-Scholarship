@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.android.todolist">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.android.todolist">
 
     <application
         android:allowBackup="false"
@@ -14,20 +14,24 @@
         <!-- The manifest entry for the MainActivity -->
         <activity android:name="com.example.android.todolist.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <!-- AddTaskActivity -->
         <activity
             android:name="com.example.android.todolist.AddTaskActivity"
-            android:label="@string/add_task_activity_name" />
+            android:label="@string/add_task_activity_name"/>
 
-        <!-- TODO (3) Register the TaskContentProvider -->
-        <!-- TODO (4) Set name, authorities, and exported attributes -->
+        <!-- COMPLETED (3) Register the TaskContentProvider -->
+        <!-- COMPLETED (4) Set name, authorities, and exported attributes -->
         <!-- exported = false limits access to this ContentProvider to only this app -->
+        <provider
+            android:name="com.example.android.todolist.data.TaskContentProvider"
+            android:authorities="com.example.android.todolist"
+            android:exported="false"/>
 
     </application>
 
