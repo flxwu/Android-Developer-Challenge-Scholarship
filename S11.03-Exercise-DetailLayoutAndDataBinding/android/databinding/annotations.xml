@@ -1,0 +1,5 @@
+<root>
+    <item name='android.databinding.DataBindingUtil T setContentView(android.app.Activity, int)'>
+        <annotation name='android.support.annotation.Nullable'/>
+    </item>
+</root>
